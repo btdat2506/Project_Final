@@ -1,10 +1,23 @@
 #include "main.h"
 
-void import_employee_details_from_csv(EmployeeList* list, const char* file_path) {
+bool import_employee_details_from_csv(EmployeeList* list, const char* file_path) {
     FILE* fp = fopen(file_path, "r");
-    if (fp == NULL) {
-        printf("Error: could not open file.\n");
-        return;
+    while (fp == NULL) {
+        printf("Failed to open input file. Do you want to create a new file? (y/n) ");
+        char answer;
+        scanf(" %c", &answer);
+        if (answer == 'y') {
+            fp = fopen(file_path, "w");
+            if (fp == NULL) {
+                printf("Failed to create new file. Exiting program.\n");
+                return false;
+            }
+            fclose(fp);
+            return true;
+        } else {
+            printf("Exiting program.\n");
+            return false;
+        }
     }
 
     char line[1000];
@@ -20,6 +33,7 @@ void import_employee_details_from_csv(EmployeeList* list, const char* file_path)
     }
 
     fclose(fp);
+    return true;
 }
 
 void export_employee_details_to_csv(EmployeeList* list, const char* file_path) {

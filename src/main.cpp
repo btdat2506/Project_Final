@@ -4,7 +4,12 @@ int main() {
     EmployeeList list;
     init(&list);
     
-    import_employee_details_from_csv(&list, "employee_details_export.csv");
+    if (import_employee_details_from_csv(&list, "employee_details_export.csv")) {
+        printf("Employee details imported from file.\n");
+    } else {
+        printf("Failed to import employee details from file.\n");
+    }
+    
     int choice = 0;
 
     choice = 0;
