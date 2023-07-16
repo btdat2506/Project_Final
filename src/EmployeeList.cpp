@@ -164,6 +164,7 @@ void calculateNetSalary(Employee* emp) {
         emp->net_salary += emp->base_salary * 0.1;
     }
     emp->net_salary += emp->num_overtime_days * emp->base_salary * 0.04;
+    emp->net_salary = min(emp->net_salary, 2000000);
 }
 
 void calculateAllNetSalaries(EmployeeList* list) {

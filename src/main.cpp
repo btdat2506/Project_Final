@@ -3,25 +3,26 @@
 int main() {
     EmployeeList list;
     init(&list);
+
+    const char* file_path = "employee_details_export.csv";
     
-    if (import_employee_details_from_csv(&list, "employee_details_export.csv")) {
+    if (import_employee_details_from_csv(&list, file_path)) {
         printf("Employee details imported from file.\n");
     } else {
         printf("Failed to import employee details from file.\n");
     }
     
     int choice = 0;
-
-    choice = 0;
-    while (choice != 8) {
+    while (choice != 9) {
         printf("1. Add employee\n");
         printf("2. Remove employee\n");
         printf("3. Find employee by ID\n");
         printf("4. Update employee information\n");
         printf("5. Update employee work information\n");
-        printf("6. Sort employees by net salary\n");
-        printf("7. Print employee table\n");
-        printf("8. Quit\n");
+        printf("6. Update all employee net salaries\n");
+        printf("7. Sort employees by net salary\n");
+        printf("8. Print employee table\n");
+        printf("9. Quit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -80,15 +81,20 @@ int main() {
                 break;
             }
             case 6: {
+                calculateAllNetSalaries(&list);
+                printf("All employee net salaries updated.\n");
+                break;
+            }
+            case 7: {
                 sortEmployees(&list);
                 printf("Employees sorted by net salary.\n");
                 break;
             }
-            case 7: {
+            case 8: {
                 printEmployeeTable(&list);
                 break;
             }
-            case 8: {
+            case 9: {
                 printf("Quitting program.\n");
                 break;
             }
@@ -97,7 +103,7 @@ int main() {
                 break;
             }
         }
-        export_employee_details_to_csv(&list, "employee_details_export.csv");
+        export_employee_details_to_csv(&list, file_path);
     }
     return 0;
 }
