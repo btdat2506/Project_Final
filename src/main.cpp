@@ -3,7 +3,8 @@
 int main() {
     EmployeeList list;
     init(&list);
-
+    
+    import_employee_details_from_csv(&list, "employee_details_export.csv");
     int choice = 0;
 
     choice = 0;
@@ -73,8 +74,7 @@ int main() {
                 break;
             }
         }
-        //export_employee_details_to_csv(&list, "employee_details_export.csv");
-        printf("Try Again\n");
+        export_employee_details_to_csv(&list, "employee_details_export.csv");
     }
     return 0;
 }

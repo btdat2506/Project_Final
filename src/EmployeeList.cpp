@@ -12,16 +12,26 @@ void swap(Employee* a, Employee* b) {
 
 Node* partition(Node* low, Node* high) {
     Employee pivot = high->emp;
-    Node* i = low->next;
+    Node* i = low->prev;
     for (Node* j = low; j != high; j = j->next) {
         if (j->emp.net_salary < pivot.net_salary) {
-            swap(&i->emp, &j->emp);
-            i = i->next;
+            i = (i == NULL) ? low : i->next;
+            swap(&(i->emp), &(j->emp));
         }
     }
-    swap(&i->emp, &high->emp);
+    i = (i == NULL) ? low : i->next;
+    swap(&(i->emp), &(high->emp));
     return i;
 }
+
+/* void quickSort(Node* low, Node* high) {
+    if (low == NULL || high == NULL || low == high || low == high->next) {
+        return;
+    }
+    Node* pivot = partition(low, high);
+    quickSort(low, pivot->prev);
+    quickSort(pivot->next, high);
+} */
 
 void quickSort(Node* low, Node* high) {
     if (low == NULL || high == NULL || low == high || low == high->next) {
@@ -33,12 +43,12 @@ void quickSort(Node* low, Node* high) {
     queue.push(l);
     queue.push(h);
     while (!queue.empty()) {
-        h = queue.front();
-        queue.pop();
         l = queue.front();
         queue.pop();
+        h = queue.front();
+        queue.pop();
 
-        if (l == h || h -> next == l)
+        if (l == NULL || h == NULL || l == h || l == h->next)
             continue;
 
         Node* p = partition(l, h);
@@ -64,15 +74,16 @@ void sortEmployees(EmployeeList* list) {
 void addEmployee(EmployeeList* list, Employee emp) {
     Node* newNode = new Node;
     newNode->emp = emp;
+    newNode->next = NULL;
     newNode->prev = NULL;
-    if (list->head == NULL)
+    if (list->head == NULL) {
+        list->head = newNode;
         list->tail = newNode;
-    else
-    {
+    } else {
         newNode->next = list->head;
         list->head->prev = newNode;
+        list->head = newNode;
     }
-    list->head = newNode;
 }
 
 void removeEmployee(EmployeeList* list, char* id) {
