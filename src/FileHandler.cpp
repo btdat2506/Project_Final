@@ -29,7 +29,7 @@ bool import_employee_details_from_csv(EmployeeList* list, const char* file_path)
             emp.education_level, &emp.base_salary, &emp.num_sick_days,
             &emp.num_unpaid_days, &emp.num_overtime_days, emp.job_performance,
             &emp.net_salary);
-        addEmployee(list, emp);
+        addTail_Employee(list, emp);
     }
 
     fclose(fp);

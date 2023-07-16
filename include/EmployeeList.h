@@ -33,7 +33,8 @@ typedef struct {
 
 void init(EmployeeList* list);
 void sortEmployees(EmployeeList* list);
-void addEmployee(EmployeeList* list, Employee emp);
+void addHead_Employee(EmployeeList* list, Employee emp);
+void addTail_Employee(EmployeeList* list, Employee emp);
 void removeEmployee(EmployeeList* list, char* id);
 Employee* findEmployee(EmployeeList* list, char* id);
 void printEmployee(Employee* emp);

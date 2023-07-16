@@ -71,7 +71,7 @@ void sortEmployees(EmployeeList* list) {
     quickSort(list->head, last);
 }
 
-void addEmployee(EmployeeList* list, Employee emp) {
+void addHead_Employee(EmployeeList* list, Employee emp) {
     Node* newNode = new Node;
     newNode->emp = emp;
     newNode->next = NULL;
@@ -83,6 +83,21 @@ void addEmployee(EmployeeList* list, Employee emp) {
         newNode->next = list->head;
         list->head->prev = newNode;
         list->head = newNode;
+    }
+}
+
+void addTail_Employee(EmployeeList* list, Employee emp) {
+    Node* newNode = new Node;
+    newNode->emp = emp;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    if (list->head == NULL) {
+        list->head = newNode;
+        list->tail = newNode;
+    } else {
+        list->tail->next = newNode;
+        newNode->prev = list->tail;
+        list->tail = newNode;
     }
 }
 
