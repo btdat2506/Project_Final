@@ -1,26 +1,26 @@
 [
 {
-  "directory": "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/EmployeeList.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\EmployeeList.dir\\src\\EmployeeList.cpp.obj -c \"D:\\OneDrive - VNU-HCMUS\\School Homework\\DSAP Lab\\Theory Classes\\Project_Final\\src\\EmployeeList.cpp\"",
-  "file": "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/src/EmployeeList.cpp",
+  "directory": "C:/Users/Dat Thanh/Project_Final/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/EmployeeList.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\EmployeeList.dir\\src\\EmployeeList.cpp.obj -c \"C:\\Users\\Dat Thanh\\Project_Final\\src\\EmployeeList.cpp\"",
+  "file": "C:/Users/Dat Thanh/Project_Final/src/EmployeeList.cpp",
   "output": "CMakeFiles/EmployeeList.dir/src/EmployeeList.cpp.obj"
 },
 {
-  "directory": "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/EmployeeList.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\EmployeeList.dir\\src\\FileHandler.cpp.obj -c \"D:\\OneDrive - VNU-HCMUS\\School Homework\\DSAP Lab\\Theory Classes\\Project_Final\\src\\FileHandler.cpp\"",
-  "file": "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/src/FileHandler.cpp",
+  "directory": "C:/Users/Dat Thanh/Project_Final/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/EmployeeList.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\EmployeeList.dir\\src\\FileHandler.cpp.obj -c \"C:\\Users\\Dat Thanh\\Project_Final\\src\\FileHandler.cpp\"",
+  "file": "C:/Users/Dat Thanh/Project_Final/src/FileHandler.cpp",
   "output": "CMakeFiles/EmployeeList.dir/src/FileHandler.cpp.obj"
 },
 {
-  "directory": "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/EmployeeList.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\EmployeeList.dir\\src\\UserInterface.cpp.obj -c \"D:\\OneDrive - VNU-HCMUS\\School Homework\\DSAP Lab\\Theory Classes\\Project_Final\\src\\UserInterface.cpp\"",
-  "file": "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/src/UserInterface.cpp",
+  "directory": "C:/Users/Dat Thanh/Project_Final/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/EmployeeList.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\EmployeeList.dir\\src\\UserInterface.cpp.obj -c \"C:\\Users\\Dat Thanh\\Project_Final\\src\\UserInterface.cpp\"",
+  "file": "C:/Users/Dat Thanh/Project_Final/src/UserInterface.cpp",
   "output": "CMakeFiles/EmployeeList.dir/src/UserInterface.cpp.obj"
 },
 {
-  "directory": "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/EmployeeList.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\EmployeeList.dir\\src\\main.cpp.obj -c \"D:\\OneDrive - VNU-HCMUS\\School Homework\\DSAP Lab\\Theory Classes\\Project_Final\\src\\main.cpp\"",
-  "file": "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/src/main.cpp",
+  "directory": "C:/Users/Dat Thanh/Project_Final/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/EmployeeList.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\EmployeeList.dir\\src\\main.cpp.obj -c \"C:\\Users\\Dat Thanh\\Project_Final\\src\\main.cpp\"",
+  "file": "C:/Users/Dat Thanh/Project_Final/src/main.cpp",
   "output": "CMakeFiles/EmployeeList.dir/src/main.cpp.obj"
 }
 ]

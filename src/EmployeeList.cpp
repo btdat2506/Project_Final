@@ -14,7 +14,7 @@ Node* partition(Node* low, Node* high) {
     Employee pivot = high->emp;
     Node* i = low->prev;
     for (Node* j = low; j != high; j = j->next) {
-        if (j->emp.net_salary < pivot.net_salary) {
+        if (j->emp.luong_thuc_linh < pivot.luong_thuc_linh) {
             i = (i == NULL) ? low : i->next;
             swap(&(i->emp), &(j->emp));
         }
@@ -23,15 +23,6 @@ Node* partition(Node* low, Node* high) {
     swap(&(i->emp), &(high->emp));
     return i;
 }
-
-/* void quickSort(Node* low, Node* high) {
-    if (low == NULL || high == NULL || low == high || low == high->next) {
-        return;
-    }
-    Node* pivot = partition(low, high);
-    quickSort(low, pivot->prev);
-    quickSort(pivot->next, high);
-} */
 
 void quickSort(Node* low, Node* high) {
     if (low == NULL || high == NULL || low == high || low == high->next) {
@@ -64,11 +55,11 @@ void quickSort(Node* low, Node* high) {
 }
 
 void sortEmployees(EmployeeList* list) {
-    Node* last = list->head;
+/*    Node* last = list->head;
     while (last != NULL && last->next != NULL) {
         last = last->next;
-    }
-    quickSort(list->head, last);
+    } */
+    quickSort(list->head, list->tail);
 }
 
 void addHead_Employee(EmployeeList* list, Employee emp) {
@@ -101,7 +92,7 @@ void addTail_Employee(EmployeeList* list, Employee emp) {
     }
 }
 
-void removeEmployee(EmployeeList* list, char* id) {
+bool removeEmployee(EmployeeList* list, char* id) {
     Node* prev = NULL;
     Node* curr = list->head;
     while (curr != NULL) {
@@ -109,17 +100,23 @@ void removeEmployee(EmployeeList* list, char* id) {
             if (prev == NULL) {
                 list->head = curr->next;
             }
-            else {
+            else 
+            if (curr->next == NULL) {
+                list->tail = curr->prev;
+                curr->prev->next = NULL;
+            }
+            else
+            {
                 curr->next->prev = prev;
                 prev->next = curr->next;
             }
-            free(&(curr->emp));
             free(curr);
-            return;
+            return true;
         }
         prev = curr;
         curr = curr->next;
     }
+    return false;
 }
 
 Employee* findEmployee(EmployeeList* list, char* id) {
@@ -134,16 +131,16 @@ Employee* findEmployee(EmployeeList* list, char* id) {
 
 void printEmployee(Employee* emp) {
     printf("ID: %s\n", emp->id);
-    printf("Name: %s\n", emp->name);
-    printf("Marital Status: %c\n", emp->marital_status);
-    printf("Number of Children: %d\n", emp->num_children);
-    printf("Education Level: %s\n", emp->education_level);
-    printf("Base Salary: %d\n", emp->base_salary);
-    printf("Number of Sick Days: %d\n", emp->num_sick_days);
-    printf("Number of Unpaid Days: %d\n", emp->num_unpaid_days);
-    printf("Number of Overtime Days: %d\n", emp->num_overtime_days);
-    printf("Job Performance: %s\n", emp->job_performance);
-    printf("Net Salary: %d\n", emp->net_salary);
+    printf("Ten: %s\n", emp->name);
+    printf("Tinh trang hon nhan: %c\n", emp->hon_nhan_status);
+    printf("So con: %d\n", emp->so_con);
+    printf("Trinh do giao duc: %s\n", emp->trinh_do_vh);
+    printf("Luong can ban: %d\n", emp->luong_can_ban);
+    printf("So ngay nghi co phep: %d\n", emp->nghi_co_phep);
+    printf("So ngay nghi khong phep: %d\n", emp->nghi_khong_phep);
+    printf("So ngay tang ca: %d\n", emp->so_ngay_OT);
+    printf("Ket qua cong viec: %s\n", emp->kq_cong_viec);
+    printf("Luong thuc linh: %d\n", emp->luong_thuc_linh);
     printf("\n");
 }
 
@@ -156,15 +153,16 @@ void printAllEmployees(EmployeeList* list) {
 }
 
 void calculateNetSalary(Employee* emp) {
-    emp->net_salary = emp->base_salary;
-    if (emp->num_children > 2) {
-        emp->net_salary += emp->base_salary * 0.05;
+    emp->luong_thuc_linh = emp->luong_can_ban;
+    if (emp->so_con > 2) {
+        emp->luong_thuc_linh += emp->luong_can_ban * 0.05;
     }
-    if (strcmp(emp->education_level, "CH") == 0) {
-        emp->net_salary += emp->base_salary * 0.1;
+    if (strcmp(emp->trinh_do_vh, "CH") == 0) {
+        emp->luong_thuc_linh += emp->luong_can_ban * 0.1;
     }
-    emp->net_salary += emp->num_overtime_days * emp->base_salary * 0.04;
-    emp->net_salary = min(emp->net_salary, 2000000);
+    emp->luong_thuc_linh += emp->so_ngay_OT * emp->luong_can_ban * 0.04;
+    emp->luong_thuc_linh = max(emp->luong_thuc_linh, 0);
+    emp->luong_thuc_linh = min(emp->luong_thuc_linh, 2000000);
 }
 
 void calculateAllNetSalaries(EmployeeList* list) {

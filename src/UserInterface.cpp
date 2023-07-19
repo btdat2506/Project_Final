@@ -12,16 +12,16 @@ void flush_input()
 
 void printEmployeeTable(EmployeeList* list) {
     printf("+----------+----------------------+-----+----+----+----------+----+----+----+----+-----------+\n");
-    printf("| ID       | Name                 | M/S | #C | EL | Base     | SD | UD | OT | JP | Net       |\n");
+    printf("| ID       | Ten                  | M/S | #C | VH | Trinh do | CP | KP | OT | KQ | Thuc linh |\n");
     printf("+----------+----------------------+-----+----+----+----------+----+----+----+----+-----------+\n");
 
     Node* curr = list->head;
     while (curr != NULL) {
         printf("| %-8s | %-20s | %-3c | %-2d | %-3s| %-9d| %-3d| %-3d| %-3d| %-3s| %-10d|\n",
-            curr->emp.id, curr->emp.name, curr->emp.marital_status, curr->emp.num_children,
-            curr->emp.education_level, curr->emp.base_salary, curr->emp.num_sick_days,
-            curr->emp.num_unpaid_days, curr->emp.num_overtime_days, curr->emp.job_performance,
-            curr->emp.net_salary);
+            curr->emp.id, curr->emp.name, curr->emp.hon_nhan_status, curr->emp.so_con,
+            curr->emp.trinh_do_vh, curr->emp.luong_can_ban, curr->emp.nghi_co_phep,
+            curr->emp.nghi_khong_phep, curr->emp.so_ngay_OT, curr->emp.kq_cong_viec,
+            curr->emp.luong_thuc_linh);
         curr = curr->next;
     }
     printf("+----------+----------------------+-----+----+----+----------+----+----+----+----+-----------+\n");
@@ -29,24 +29,24 @@ void printEmployeeTable(EmployeeList* list) {
 
 bool addEmployeeUI(EmployeeList* list, Employee &emp)
 {
-    printf("Enter employee ID (8 characters): ");
+    printf("Nhap ID nhan vien (8 ki tu): ");
     while (true)
     {
         if (scanf("%s", emp.id) == 1 && strlen(emp.id) <= 8) {
             if (findEmployee(list, emp.id) != NULL) {
-                printf("Employee with ID %s already exists. Please enter a different ID: ", emp.id);
+                printf("ID nhan vien %s da ton tai. Xin vui long nhap ID khac: ", emp.id);
             }
             else {
                 break;
             }
         }
         else {
-            printf("Invalid input. Please enter employee ID (8 characters): ");
+            printf("Nhap sai. Vui long nhap ID nhan vien (8 ki tu): ");
         }
         flush_input();
     }
     flush_input();
-    printf("Enter employee name (up to 20 characters): ");
+    printf("Nhap ten nhan vien (toi da 20 ki tu): ");
     while (true)
     {
         if (fgets(emp.name, sizeof(emp.name), stdin) != NULL)
@@ -56,77 +56,77 @@ bool addEmployeeUI(EmployeeList* list, Employee &emp)
             if (strlen(emp.name) <= 20 && emp.name != NULL && emp.name[0] != '\0') 
                 break;
         }
-        printf("Invalid input. Please enter employee name (up to 20 characters): ");
+        printf("Nhap sai. Vui long nhap ten nhan vien (8 ki tu): ");
     }
     flush_input();
-    printf("Enter employee marital status (M/S): ");
-    while (scanf("%c", &emp.marital_status) != 1 || (emp.marital_status != 'M' && emp.marital_status != 'S')) {
-        printf("Invalid input. Please enter employee marital status (M/S): ");
+    printf("Nhap tinh trang hon nhan cua nhan vien (M/S): ");
+    while (scanf("%c", &emp.hon_nhan_status) != 1 || (emp.hon_nhan_status != 'M' && emp.hon_nhan_status != 'S')) {
+        printf("Nhap sai. Vui long nhap tinh trang hon nhan (M/S):");
         flush_input();
     }
     flush_input();
-    printf("Enter number of children (up to 20): ");
-    while (scanf("%d", &emp.num_children) != 1 || emp.num_children < 0 || emp.num_children > 20) {
-        printf("Invalid input. Please enter number of children (up to 20): ");
+    printf("Nhap vao so con (toi da 20):");
+    while (scanf("%d", &emp.so_con) != 1 || emp.so_con < 0 || emp.so_con > 20) {
+        printf("Nhap sai. Vui long nhap vao so con (toi da 20):");
         flush_input();
     }
     flush_input();
-    printf("Enter education level (CH/DH/CD): ");
-    while (scanf("%2s", emp.education_level) != 1 || (strcmp(emp.education_level, "CH") != 0 && strcmp(emp.education_level, "DH") != 0 && strcmp(emp.education_level, "CD") != 0)) {
-        printf("Invalid input. Please enter education level (CH/DH/CD): ");
+    printf("Nhap trinh do giao duc (CH/DH/CD): ");
+    while (scanf("%2s", emp.trinh_do_vh) != 1 || (strcmp(emp.trinh_do_vh, "CH") != 0 && strcmp(emp.trinh_do_vh, "DH") != 0 && strcmp(emp.trinh_do_vh, "CD") != 0)) {
+        printf("Nhap sai. Vui long nhap trinh do giao duc (CH/DH/CD): ");
         flush_input();
     }
     flush_input();
-    printf("Enter base salary (up to 1000000): ");
-    while (scanf("%d", &emp.base_salary) != 1 || emp.base_salary < 0 || emp.base_salary > 1000000) {
-        printf("Invalid input. Please enter base salary (up to 1000000): ");
+    printf("Nhap vao muc luong co ban (toi da 1000000): ");
+    while (scanf("%d", &emp.luong_can_ban) != 1 || emp.luong_can_ban < 0 || emp.luong_can_ban > 1000000) {
+        printf("Nhap sai. Vui long nhap muc luong co ban (toi da 1000000): ");
         flush_input();
     }
     flush_input();
-    printf("Enter number of sick days (up to 28): ");
-    while (scanf("%hhd", &emp.num_sick_days) != 1 || emp.num_sick_days < 0 || emp.num_sick_days > 28) {
-        printf("Invalid input. Please enter number of sick days (up to 28): ");
+    printf("Nhap so ngay nghi co phep (toi da 28): ");
+    while (scanf("%hhd", &emp.nghi_co_phep) != 1 || emp.nghi_co_phep < 0 || emp.nghi_co_phep > 28) {
+        printf("Nhap sai. Vui long nhap so ngay nghi co phep (toi da 28): ");
         flush_input();
     }
     flush_input();
-    printf("Enter number of unpaid days (up to 28): ");
-    while (scanf("%hhd", &emp.num_unpaid_days) != 1 || emp.num_unpaid_days < 0 || emp.num_unpaid_days > 28) {
-        printf("Invalid input. Please enter number of unpaid days (up to 28): ");
+    printf("Nhap so ngay nghi khong phep (toi da 28): ");
+    while (scanf("%hhd", &emp.nghi_khong_phep) != 1 || emp.nghi_khong_phep < 0 || emp.nghi_khong_phep > 28) {
+        printf("Nhap sai. Vui long nhap so ngay nghi khong phep (toi da 28): ");
         flush_input();
     }
     flush_input();
-    printf("Enter number of overtime days (up to 28): ");
-    while (scanf("%hhd", &emp.num_overtime_days) != 1 || emp.num_overtime_days < 0 || emp.num_overtime_days > 28) {
-        printf("Invalid input. Please enter number of overtime days (up to 28): ");
+    printf("Nhap so ngay tang ca (toi da 28): ");
+    while (scanf("%hhd", &emp.so_ngay_OT) != 1 || emp.so_ngay_OT < 0 || emp.so_ngay_OT > 28) {
+        printf("Nhap sai. Vui long nhap so ngay tang ca (toi da 28): ");
         flush_input();
     }
     flush_input();
-    printf("Enter job performance (T/TB/K): ");
-    while (scanf("%2s", emp.job_performance) != 1 || (strcmp(emp.job_performance, "T") != 0 && strcmp(emp.job_performance, "TB") != 0 && strcmp(emp.job_performance, "K") != 0)) {
-        printf("Invalid input. Please enter job performance (T/TB/K): ");
+    printf("Nhap ket qua cong viec (T/TB/K): ");
+    while (scanf("%2s", emp.kq_cong_viec) != 1 || (strcmp(emp.kq_cong_viec, "T") != 0 && strcmp(emp.kq_cong_viec, "TB") != 0 && strcmp(emp.kq_cong_viec, "K") != 0)) {
+        printf("Nhap sai. Vui long nhap ket qua cong viec (T/TB/K): ");
         flush_input();
     }
     flush_input();
-    emp.net_salary = 0;
-    printf("Please verify the following information:\n");
+    emp.luong_thuc_linh = 0;
+    printf("Vui long xac nhan thong tin sau:\n");
     printEmployee(&emp);
-    printf("Is this correct? (Y/N): ");
+    printf("Thong tin co chinh xac khong? (Y/N): ");
     char choice;
     while (true)
     {
         scanf("%c", &choice);
         if (choice == 'Y' || choice == 'y') {
             calculateNetSalary(&emp);
-            printf("Employee added.\n");
+            printf("Them nhan vien thanh cong.\n");
             return true;
         }
         else 
         if (choice == 'N' || choice == 'n') {
-            printf("Employee not added.\n");
+            printf("Them nhan vien khong thanh cong.\n");
             return false;
         }
         else {
-            printf("Invalid input. Please enter Y/N: ");
+            printf("Nhap sai. Vui long nhap Y/N: ");
             flush_input();
             continue;
         }
@@ -136,43 +136,43 @@ bool addEmployeeUI(EmployeeList* list, Employee &emp)
 bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
     Employee* emp = findEmployee(list, id);
     if (emp == NULL) {
-        printf("Employee with ID %s not found.\n", id);
+        printf("Khong tim thay nhan vien voi ID %s.\n", id);
         return false;
     }
 
-    printf("Which information would you like to update?\n");
-    printf("1. Name\n");
-    printf("2. Marital status\n");
-    printf("3. Number of children\n");
-    printf("4. Education level\n");
-    printf("5. Base salary\n");
-    printf("6. All of the above\n");
-    printf("Enter your choice (1-6): ");
+    printf("Thong tin ly lich nao can cap nhat?\n");
+    printf("1. Ten\n");
+    printf("2. Tinh trang hon nha\n");
+    printf("3. So con\n");
+    printf("4. Trinh do giao duc\n");
+    printf("5. Luong co ban\n");
+    printf("6. Toan bo\n");
+    printf("Nhap vao lua chon (1-6): ");
     int choice;
     while (scanf("%d", &choice) != 1 || choice < 1 || choice > 6) {
-        printf("Invalid input. Please enter your choice (1-6): ");
+        printf("Nhap sai. Vui long nhap lua chon (1-6): ");
         flush_input();
     }
     flush_input();
 
     bool updated = false;
     if (choice == 1 || choice == 6) {
-        printf("Enter new name (up to 20 characters): ");
+        printf("Nhap ten moi cua nhan vien (toi da 20 ki tu): ");
         while (true) {
             if (fgets(emp->name, sizeof(emp->name), stdin) != NULL) {
                 emp->name[strcspn(emp->name, "\n")] = '\0'; // remove the newline character at the end
                 if (strlen(emp->name) <= 20 && emp->name != NULL && emp->name[0] != '\0')
                     break;
             }
-            printf("Invalid input. Please enter new name (up to 20 characters): ");
+            printf("Nhap sai. Vui long nhap ten moi cua nhan vien (8 ki tu): ");
         }
         updated = true;
     }
     else
     if (choice == 2 || choice == 6) {
-        printf("Enter new marital status (M/S): ");
-        while (scanf("%c", &emp->marital_status) != 1 || (emp->marital_status != 'M' && emp->marital_status != 'S')) {
-            printf("Invalid input. Please enter new marital status (M/S): ");
+        printf("Nhap tinh trang hon nhan cua nhan vien (M/S): ");
+        while (scanf("%c", &emp->hon_nhan_status) != 1 || (emp->hon_nhan_status != 'M' && emp->hon_nhan_status != 'S')) {
+            printf("Nhap sai. Vui long nhap tinh trang hon nhan (M/S):");
             flush_input();
         }
         flush_input();
@@ -180,9 +180,9 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
     }
     else
     if (choice == 3 || choice == 6) {
-        printf("Enter new number of children (up to 20): ");
-        while (scanf("%d", &emp->num_children) != 1 || emp->num_children < 0 || emp->num_children > 20) {
-            printf("Invalid input. Please enter new number of children (up to 20): ");
+        printf("Nhap vao so con (toi da 20):");
+        while (scanf("%d", &emp->so_con) != 1 || emp->so_con < 0 || emp->so_con > 20) {
+            printf("Nhap sai. Vui long nhap vao so con (toi da 20):");
             flush_input();
         }
         flush_input();
@@ -190,9 +190,9 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
     }
     else
     if (choice == 4 || choice == 6) {
-        printf("Enter new education level (CH/DH/CD): ");
-        while (scanf("%2s", emp->education_level) != 1 || (strcmp(emp->education_level, "CH") != 0 && strcmp(emp->education_level, "DH") != 0 && strcmp(emp->education_level, "CD") != 0)) {
-            printf("Invalid input. Please enter new education level (CH/DH/CD): ");
+        printf("Nhap trinh do giao duc (CH/DH/CD): ");
+        while (scanf("%2s", emp->trinh_do_vh) != 1 || (strcmp(emp->trinh_do_vh, "CH") != 0 && strcmp(emp->trinh_do_vh, "DH") != 0 && strcmp(emp->trinh_do_vh, "CD") != 0)) {
+            printf("Nhap sai. Vui long nhap trinh do giao duc (CH/DH/CD): ");
             flush_input();
         }
         flush_input();
@@ -200,9 +200,9 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
     }
     else
     if (choice == 5 || choice == 6) {
-        printf("Enter new base salary (up to 1000000): ");
-        while (scanf("%d", &emp->base_salary) != 1 || emp->base_salary < 0 || emp->base_salary > 1000000) {
-            printf("Invalid input. Please enter new base salary (up to 1000000): ");
+        printf("Nhap vao muc luong co ban (toi da 1000000): ");
+        while (scanf("%d", &emp->luong_can_ban) != 1 || emp->luong_can_ban < 0 || emp->luong_can_ban > 1000000) {
+            printf("Nhap sai. Vui long nhap muc luong co ban (toi da 1000000): ");
             flush_input();
         }
         flush_input();
@@ -210,30 +210,30 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
     }
 
     if (updated) {
-        printf("Please verify the following information:\n");
+        printf("Vui long xac nhan thong tin sau:\n");
         printEmployee(emp);
-        printf("Is this correct? (Y/N): ");
+        printf("Thong tin co chinh xac khong? (Y/N): ");
         char choice;
         while (true) {
             scanf("%c", &choice);
             if (choice == 'Y' || choice == 'y') {
                 calculateNetSalary(emp);
-                printf("Employee information updated.\n");
+                printf("Ly lich nhan vien cap nhat thanh cong.\n");
                 return true;
             }
             else if (choice == 'N' || choice == 'n') {
-                printf("Employee information not updated.\n");
+                printf("Ly lich nhan vien khong cap nhat thanh cong.\n");
                 return false;
             }
             else {
-                printf("Invalid input. Please enter Y/N: ");
+                printf("Nhap sai. Vui long nhap Y/N: ");
                 flush_input();
                 continue;
             }
         }
     }
     else {
-        printf("No information updated.\n");
+        printf("Khong co thong tin nao duoc cap nhat.\n");
         return false;
     }
 }
@@ -241,48 +241,55 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
 bool updateEmployeeWorkInfoUI(EmployeeList* list, char* id) {
     Employee* emp = findEmployee(list, id);
     if (emp == NULL) {
-        printf("Employee with ID %s not found.\n", id);
+        printf("Khong tim thay nhan vien co ID %s.\n", id);
         return false;
     }
 
-    printf("Which information would you like to update?\n");
-    printf("1. Number of sick days\n");
-    printf("2. Number of unpaid days\n");
-    printf("3. Number of overtime days\n");
-    printf("4. All of the above\n");
-    printf("Enter your choice (1-4): ");
+    printf("Thong tin lam viec nao cua nhan vien can duoc cap nhat?\n");
+    printf("1. Ket qua cong viec\n");
+    printf("2. So ngay nghi co phep\n");
+    printf("3. So ngay nghi khong phep\n");
+    printf("4. So ngay tang ca\n");
+    printf("5. Toan bo\n");
+    printf("Nhap lua chon (1-5): ");
     int choice;
-    while (scanf("%d", &choice) != 1 || choice < 1 || choice > 4) {
-        printf("Invalid input. Please enter your choice (1-4): ");
+    while (scanf("%d", &choice) != 1 || choice < 1 || choice > 5) {
+        printf("Nhap sai. Vui long nhap lua chon (1-5): ");
         flush_input();
     }
     flush_input();
 
     bool updated = false;
-    if (choice == 1 || choice == 4) {
-        printf("Enter new number of sick days (up to 20): ");
-        while (scanf("%d", &emp->num_sick_days) != 1 || emp->num_sick_days < 0 || emp->num_sick_days > 20) {
-            printf("Invalid input. Please enter new number of sick days (up to 20): ");
+    if (choice == 1 || choice == 5) {
+        printf("Nhap ket qua cong viec (T/TB/K): ");
+        while (scanf("%2s", emp->kq_cong_viec) != 1 || (strcmp(emp->kq_cong_viec, "T") != 0 && strcmp(emp->kq_cong_viec, "TB") != 0 && strcmp(emp->kq_cong_viec, "K") != 0)) {
+            printf("Nhap sai. Vui long nhap ket qua cong viec (T/TB/K): ");
+            flush_input();
+        }
+        updated = true;
+    }
+    if (choice == 2 || choice == 5) {
+        printf("Nhap so ngay nghi co phep (toi da 20): ");
+        while (scanf("%d", &emp->nghi_co_phep) != 1 || emp->nghi_co_phep < 0 || emp->nghi_co_phep > 20) {
+            printf("Nhap sai. Vui long nhap so ngay nghi co phep (toi da 20): ");
             flush_input();
         }
         flush_input();
         updated = true;
     }
-    else
-    if (choice == 2 || choice == 4) {
-        printf("Enter new number of unpaid days (up to 20): ");
-        while (scanf("%d", &emp->num_unpaid_days) != 1 || emp->num_unpaid_days < 0 || emp->num_unpaid_days > 20) {
-            printf("Invalid input. Please enter new number of unpaid days (up to 20): ");
+    if (choice == 3 || choice == 5) {
+        printf("Nhap so ngay nghi khong phep (toi da 20): ");
+        while (scanf("%d", &emp->nghi_khong_phep) != 1 || emp->nghi_khong_phep < 0 || emp->nghi_khong_phep > 20) {
+            printf("Nhap sai. Vui long nhap so ngay nghi khong phep (toi da 20): ");
             flush_input();
         }
         flush_input();
         updated = true;
     }
-    else
-    if (choice == 3 || choice == 4) {
-        printf("Enter new number of overtime days (up to 20): ");
-        while (scanf("%d", &emp->num_overtime_days) != 1 || emp->num_overtime_days < 0 || emp->num_overtime_days > 20) {
-            printf("Invalid input. Please enter new number of overtime days (up to 20): ");
+    if (choice == 4 || choice == 5) {
+        printf("Nhap so ngay tang ca (toi da 20): ");
+        while (scanf("%d", &emp->so_ngay_OT) != 1 || emp->so_ngay_OT < 0 || emp->so_ngay_OT > 20) {
+            printf("Nhap sai. Vui long nhap so ngay tang ca (toi da 20): ");
             flush_input();
         }
         flush_input();
@@ -290,30 +297,30 @@ bool updateEmployeeWorkInfoUI(EmployeeList* list, char* id) {
     }
 
     if (updated) {
-        printf("Please verify the following information:\n");
+        printf("Vui long xac nhan thong tin sau:\n");
         printEmployee(emp);
-        printf("Is this correct? (Y/N): ");
+        printf("Thong tin co chinh xac khong? (Y/N): ");
         char choice;
         while (true) {
             scanf("%c", &choice);
             if (choice == 'Y' || choice == 'y') {
                 calculateNetSalary(emp);
-                printf("Employee information updated.\n");
+                printf("Thong tin lam viec cua cap nhat thanh cong.\n");
                 return true;
             }
             else if (choice == 'N' || choice == 'n') {
-                printf("Employee information not updated.\n");
+                printf("Thong tin lam viec cua nhan vien khong cap nhat thanh cong.\n");
                 return false;
             }
             else {
-                printf("Invalid input. Please enter Y/N: ");
+                printf("Nhap sai. Vui long nhap Y/N: ");
                 flush_input();
                 continue;
             }
         }
     }
     else {
-        printf("No information updated.\n");
+        printf("Khong co thong tin nao duoc cap nhat.\n");
         return false;
     }
 }

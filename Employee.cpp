@@ -8,15 +8,15 @@
 typedef struct {
     char id[MAX_ID_LEN + 1];
     char name[MAX_NAME_LEN + 1];
-    char marital_status;
-    int num_children;
-    char education_level[3];
-    int base_salary;
-    char num_sick_days,
-         num_unpaid_days,
-         num_overtime_days;
-    char job_performance[3];
-    int net_salary;
+    char hon_nhan_status;
+    int so_con;
+    char trinh_do_vh[3];
+    int luong_can_ban;
+    char nghi_co_phep,
+         nghi_khong_phep,
+         so_ngay_OT;
+    char kq_cong_viec[3];
+    int luong_thuc_linh;
 } Employee;
 
 typedef struct Node {
@@ -70,14 +70,14 @@ Employee* findEmployee(EmployeeList* list, char* id) {
 }
 
 void calculateNetSalary(Employee* emp) {
-    emp->net_salary = emp->base_salary;
-    if (emp->num_children > 2) {
-        emp->net_salary += emp->base_salary * 0.05;
+    emp->luong_thuc_linh = emp->luong_can_ban;
+    if (emp->so_con > 2) {
+        emp->luong_thuc_linh += emp->luong_can_ban * 0.05;
     }
-    if (strcmp(emp->education_level, "CH") == 0) {
-        emp->net_salary += emp->base_salary * 0.1;
+    if (strcmp(emp->trinh_do_vh, "CH") == 0) {
+        emp->luong_thuc_linh += emp->luong_can_ban * 0.1;
     }
-    emp->net_salary += emp->num_overtime_days * emp->base_salary * 0.04;
+    emp->luong_thuc_linh += emp->so_ngay_OT * emp->luong_can_ban * 0.04;
 }
 
 void calculateAllNetSalaries(EmployeeList* list) {
@@ -91,15 +91,15 @@ void calculateAllNetSalaries(EmployeeList* list) {
 void printEmployee(Employee* emp) {
     printf("ID: %s\n", emp->id);
     printf("Name: %s\n", emp->name);
-    printf("Marital Status: %c\n", emp->marital_status);
-    printf("Number of Children: %d\n", emp->num_children);
-    printf("Education Level: %s\n", emp->education_level);
-    printf("Base Salary: %d\n", emp->base_salary);
-    printf("Number of Sick Days: %d\n", emp->num_sick_days);
-    printf("Number of Unpaid Days: %d\n", emp->num_unpaid_days);
-    printf("Number of Overtime Days: %d\n", emp->num_overtime_days);
-    printf("Job Performance: %s\n", emp->job_performance);
-    printf("Net Salary: %d\n", emp->net_salary);
+    printf("Marital Status: %c\n", emp->hon_nhan_status);
+    printf("Number of Children: %d\n", emp->so_con);
+    printf("Education Level: %s\n", emp->trinh_do_vh);
+    printf("Base Salary: %d\n", emp->luong_can_ban);
+    printf("Number of Sick Days: %d\n", emp->nghi_co_phep);
+    printf("Number of Unpaid Days: %d\n", emp->nghi_khong_phep);
+    printf("Number of Overtime Days: %d\n", emp->so_ngay_OT);
+    printf("Job Performance: %s\n", emp->kq_cong_viec);
+    printf("Net Salary: %d\n", emp->luong_thuc_linh);
     printf("\n");
 }
 
@@ -121,7 +121,7 @@ Node* partition(Node* low, Node* high) {
     Employee pivot = high->emp;
     Node* i = low->next;
     for (Node* j = low; j != high; j = j->next) {
-        if (j->emp.net_salary < pivot.net_salary) {
+        if (j->emp.luong_thuc_linh < pivot.luong_thuc_linh) {
             swap(&i->emp, &j->emp);
             i = i->next;
         }

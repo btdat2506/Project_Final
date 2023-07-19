@@ -9,15 +9,15 @@
 typedef struct {
     char id[MAX_ID_LEN + 1];
     char name[MAX_NAME_LEN + 3];
-    char marital_status;
-    int  num_children;
-    char education_level[3];
-    int  base_salary;
-    char num_sick_days,
-         num_unpaid_days,
-         num_overtime_days;
-    char job_performance[3];
-    int  net_salary;
+    char hon_nhan_status;
+    int  so_con;
+    char trinh_do_vh[3];
+    int  luong_can_ban;
+    char nghi_co_phep,
+         nghi_khong_phep,
+         so_ngay_OT;
+    char kq_cong_viec[3];
+    int  luong_thuc_linh;
 } Employee;
 
 typedef struct Node {
@@ -35,7 +35,7 @@ void init(EmployeeList* list);
 void sortEmployees(EmployeeList* list);
 void addHead_Employee(EmployeeList* list, Employee emp);
 void addTail_Employee(EmployeeList* list, Employee emp);
-void removeEmployee(EmployeeList* list, char* id);
+bool removeEmployee(EmployeeList* list, char* id);
 Employee* findEmployee(EmployeeList* list, char* id);
 void printEmployee(Employee* emp);
 void printAllEmployees(EmployeeList* list);

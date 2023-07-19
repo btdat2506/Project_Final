@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/build"
+			"value" : "c:/Users/Dat Thanh/Project_Final/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -587,7 +587,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/build/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/Dat Thanh/Project_Final/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final"
+			"value" : "C:/Users/Dat Thanh/Project_Final"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1295,7 +1295,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final/build"
+			"value" : "C:/Users/Dat Thanh/Project_Final/build"
 		},
 		{
 			"name" : "EmployeeList_IS_TOP_LEVEL",
@@ -1319,7 +1319,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/OneDrive - VNU-HCMUS/School Homework/DSAP Lab/Theory Classes/Project_Final"
+			"value" : "C:/Users/Dat Thanh/Project_Final"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
