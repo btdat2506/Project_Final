@@ -109,6 +109,7 @@ bool addEmployeeUI(EmployeeList* list, Employee &emp)
     flush_input();
     emp.luong_thuc_linh = 0;
     printf("Vui long xac nhan thong tin sau:\n");
+    calculateNetSalary(&emp);
     printEmployee(&emp);
     printf("Thong tin co chinh xac khong? (Y/N): ");
     char choice;
@@ -116,7 +117,6 @@ bool addEmployeeUI(EmployeeList* list, Employee &emp)
     {
         scanf("%c", &choice);
         if (choice == 'Y' || choice == 'y') {
-            calculateNetSalary(&emp);
             printf("Them nhan vien thanh cong.\n");
             return true;
         }
@@ -211,13 +211,13 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
 
     if (updated) {
         printf("Vui long xac nhan thong tin sau:\n");
+        calculateNetSalary(emp);
         printEmployee(emp);
         printf("Thong tin co chinh xac khong? (Y/N): ");
         char choice;
         while (true) {
             scanf("%c", &choice);
             if (choice == 'Y' || choice == 'y') {
-                calculateNetSalary(emp);
                 printf("Ly lich nhan vien cap nhat thanh cong.\n");
                 return true;
             }
@@ -298,13 +298,13 @@ bool updateEmployeeWorkInfoUI(EmployeeList* list, char* id) {
 
     if (updated) {
         printf("Vui long xac nhan thong tin sau:\n");
+        calculateNetSalary(emp);
         printEmployee(emp);
         printf("Thong tin co chinh xac khong? (Y/N): ");
         char choice;
         while (true) {
             scanf("%c", &choice);
             if (choice == 'Y' || choice == 'y') {
-                calculateNetSalary(emp);
                 printf("Thong tin lam viec cua cap nhat thanh cong.\n");
                 return true;
             }
