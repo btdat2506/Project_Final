@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Dat Thanh/Project_Final
+# Install script for directory: D:/HCMUS_Development/Projects/DSAP_Lab/Project_Final
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Dat Thanh/Project_Final/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/HCMUS_Development/Projects/DSAP_Lab/Project_Final/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -17,6 +17,7 @@ int main() {
     
     int choice = 0;
     while (choice != 9) {
+        printf("\n");
         printf("1. Them nhan vien\n");
         printf("2. Xoa nhan vien\n");
         printf("3. Tim nhan vien bang ID\n");
@@ -28,6 +29,7 @@ int main() {
         printf("9. Exit\n");
         printf("Nhap vao lua chon: ");
         scanf("%d", &choice);
+        printf("\n");
 
         switch (choice) {
             case 1: {
@@ -67,26 +69,14 @@ int main() {
                 char id[MAX_ID_LEN + 1];
                 printf("Nhap ID nhan vien can cap nhat ly lich: ");
                 scanf("%s", id);
-                bool updated = updateEmployeeInfoUI(&list, id);
-                if (updated) {
-                    printf("Ly lich nhan vien cap nhat thanh cong.\n");
-                }
-                else {
-                    printf("Ly lich nhan vien cap nhat khong thanh cong.\n");
-                }
+                updateEmployeeInfoUI(&list, id);
                 break;
             }
             case 5: {
                 char id[MAX_ID_LEN + 1];
                 printf("Nhap ID nhan vien can cap nhat thong tin cham cong: ");
                 scanf("%s", id);
-                bool updated = updateEmployeeWorkInfoUI(&list, id);
-                if (updated) {
-                    printf("Thong tin cham cong nhan vien cap nhat thanh cong.\n");
-                }
-                else {
-                    printf("Thong tin cham cong nhan vien cap nhat thanh cong.\n");
-                }
+                updateEmployeeWorkInfoUI(&list, id);
                 break;
             }
             case 6: {

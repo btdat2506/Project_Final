@@ -8,10 +8,10 @@
 		},
 		"paths" : 
 		{
-			"cmake" : "C:/Program Files/CMake/bin/cmake.exe",
-			"cpack" : "C:/Program Files/CMake/bin/cpack.exe",
-			"ctest" : "C:/Program Files/CMake/bin/ctest.exe",
-			"root" : "C:/Program Files/CMake/share/cmake-3.27"
+			"cmake" : "C:/msys64/mingw64/bin/cmake.exe",
+			"cpack" : "C:/msys64/mingw64/bin/cpack.exe",
+			"ctest" : "C:/msys64/mingw64/bin/ctest.exe",
+			"root" : "C:/msys64/mingw64/share/cmake"
 		},
 		"version" : 
 		{
@@ -19,14 +19,14 @@
 			"major" : 3,
 			"minor" : 27,
 			"patch" : 0,
-			"string" : "3.27.0-rc4",
-			"suffix" : "rc4"
+			"string" : "3.27.0",
+			"suffix" : ""
 		}
 	},
 	"objects" : 
 	[
 		{
-			"jsonFile" : "codemodel-v2-7791580da0c48245c4dd.json",
+			"jsonFile" : "codemodel-v2-5c2f52587c374f948281.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
@@ -35,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-1743cb394cffb48b0936.json",
+			"jsonFile" : "cache-v2-28bb190f28bdfb8222d9.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -44,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-6e1612de4708021b984b.json",
+			"jsonFile" : "cmakeFiles-v1-5557a6592952fb5afa5c.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -90,7 +90,7 @@
 				"responses" : 
 				[
 					{
-						"jsonFile" : "cache-v2-1743cb394cffb48b0936.json",
+						"jsonFile" : "cache-v2-28bb190f28bdfb8222d9.json",
 						"kind" : "cache",
 						"version" : 
 						{
@@ -99,7 +99,7 @@
 						}
 					},
 					{
-						"jsonFile" : "codemodel-v2-7791580da0c48245c4dd.json",
+						"jsonFile" : "codemodel-v2-5c2f52587c374f948281.json",
 						"kind" : "codemodel",
 						"version" : 
 						{
@@ -117,7 +117,7 @@
 						}
 					},
 					{
-						"jsonFile" : "cmakeFiles-v1-6e1612de4708021b984b.json",
+						"jsonFile" : "cmakeFiles-v1-5557a6592952fb5afa5c.json",
 						"kind" : "cmakeFiles",
 						"version" : 
 						{

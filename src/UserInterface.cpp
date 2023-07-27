@@ -108,7 +108,7 @@ bool addEmployeeUI(EmployeeList* list, Employee &emp)
     }
     flush_input();
     emp.luong_thuc_linh = 0;
-    printf("Vui long xac nhan thong tin sau:\n");
+    printf("\nVui long xac nhan thong tin sau:\n");
     calculateNetSalary(&emp);
     printEmployee(&emp);
     printf("Thong tin co chinh xac khong? (Y/N): ");
@@ -117,12 +117,12 @@ bool addEmployeeUI(EmployeeList* list, Employee &emp)
     {
         scanf("%c", &choice);
         if (choice == 'Y' || choice == 'y') {
-            printf("Them nhan vien thanh cong.\n");
+            printf("Them nhan vien thanh cong.\n\n");
             return true;
         }
         else 
         if (choice == 'N' || choice == 'n') {
-            printf("Them nhan vien khong thanh cong.\n");
+            printf("Them nhan vien khong thanh cong.\n\n");
             return false;
         }
         else {
@@ -133,16 +133,18 @@ bool addEmployeeUI(EmployeeList* list, Employee &emp)
     }
 }
 
-bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
+void updateEmployeeInfoUI(EmployeeList* list, char* id) {
     Employee* emp = findEmployee(list, id);
     if (emp == NULL) {
         printf("Khong tim thay nhan vien voi ID %s.\n", id);
-        return false;
+        return;
     }
 
-    printf("Thong tin ly lich nao can cap nhat?\n");
+    Employee backup_employee = *emp;
+
+    printf("Thong tin ly lich nao can thay doi?\n");
     printf("1. Ten\n");
-    printf("2. Tinh trang hon nha\n");
+    printf("2. Tinh trang hon nhan\n");
     printf("3. So con\n");
     printf("4. Trinh do giao duc\n");
     printf("5. Luong co ban\n");
@@ -210,7 +212,7 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
     }
 
     if (updated) {
-        printf("Vui long xac nhan thong tin sau:\n");
+        printf("\nVui long xac nhan thong tin sau:\n");
         calculateNetSalary(emp);
         printEmployee(emp);
         printf("Thong tin co chinh xac khong? (Y/N): ");
@@ -219,11 +221,12 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
             scanf("%c", &choice);
             if (choice == 'Y' || choice == 'y') {
                 printf("Ly lich nhan vien cap nhat thanh cong.\n");
-                return true;
+                return;
             }
             else if (choice == 'N' || choice == 'n') {
+                *emp = backup_employee;
                 printf("Ly lich nhan vien khong cap nhat thanh cong.\n");
-                return false;
+                return;
             }
             else {
                 printf("Nhap sai. Vui long nhap Y/N: ");
@@ -234,16 +237,18 @@ bool updateEmployeeInfoUI(EmployeeList* list, char* id) {
     }
     else {
         printf("Khong co thong tin nao duoc cap nhat.\n");
-        return false;
+        return;
     }
 }
 
-bool updateEmployeeWorkInfoUI(EmployeeList* list, char* id) {
+void updateEmployeeWorkInfoUI(EmployeeList* list, char* id) {
     Employee* emp = findEmployee(list, id);
     if (emp == NULL) {
         printf("Khong tim thay nhan vien co ID %s.\n", id);
-        return false;
+        return;
     }
+
+    Employee backup_employee = *emp;
 
     printf("Thong tin lam viec nao cua nhan vien can duoc cap nhat?\n");
     printf("1. Ket qua cong viec\n");
@@ -297,7 +302,7 @@ bool updateEmployeeWorkInfoUI(EmployeeList* list, char* id) {
     }
 
     if (updated) {
-        printf("Vui long xac nhan thong tin sau:\n");
+        printf("\nVui long xac nhan thong tin sau:\n");
         calculateNetSalary(emp);
         printEmployee(emp);
         printf("Thong tin co chinh xac khong? (Y/N): ");
@@ -306,11 +311,12 @@ bool updateEmployeeWorkInfoUI(EmployeeList* list, char* id) {
             scanf("%c", &choice);
             if (choice == 'Y' || choice == 'y') {
                 printf("Thong tin lam viec cua cap nhat thanh cong.\n");
-                return true;
+                return;
             }
             else if (choice == 'N' || choice == 'n') {
+                *emp = backup_employee;
                 printf("Thong tin lam viec cua nhan vien khong cap nhat thanh cong.\n");
-                return false;
+                return;
             }
             else {
                 printf("Nhap sai. Vui long nhap Y/N: ");
@@ -321,6 +327,6 @@ bool updateEmployeeWorkInfoUI(EmployeeList* list, char* id) {
     }
     else {
         printf("Khong co thong tin nao duoc cap nhat.\n");
-        return false;
+        return;
     }
 }
