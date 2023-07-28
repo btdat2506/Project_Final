@@ -65,9 +65,9 @@ bool addEmployeeUI(EmployeeList* list, Employee &emp)
         flush_input();
     }
     flush_input();
-    printf("Nhap vao so con (toi da 20):");
+    printf("Nhap vao so con (toi da 20): ");
     while (scanf("%d", &emp.so_con) != 1 || emp.so_con < 0 || emp.so_con > 20) {
-        printf("Nhap sai. Vui long nhap vao so con (toi da 20):");
+        printf("Nhap sai. Vui long nhap vao so con (toi da 20): ");
         flush_input();
     }
     flush_input();
@@ -182,9 +182,9 @@ void updateEmployeeInfoUI(EmployeeList* list, char* id) {
     }
     else
     if (choice == 3 || choice == 6) {
-        printf("Nhap vao so con (toi da 20):");
+        printf("Nhap vao so con (toi da 20): ");
         while (scanf("%d", &emp->so_con) != 1 || emp->so_con < 0 || emp->so_con > 20) {
-            printf("Nhap sai. Vui long nhap vao so con (toi da 20):");
+            printf("Nhap sai. Vui long nhap vao so con (toi da 20): ");
             flush_input();
         }
         flush_input();
